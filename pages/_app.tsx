@@ -1,17 +1,17 @@
-import '../styles/globals.css';
-import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import type { AppProps } from 'next/app';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import "../styles/globals.css"
+import "@rainbow-me/rainbowkit/styles.css"
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit"
+import type { AppProps } from "next/app"
+import { configureChains, createConfig, WagmiConfig } from "wagmi"
 import {
   arbitrum,
   goerli,
   mainnet,
   optimism,
   polygon,
-  zora,
-} from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+  zora
+} from "wagmi/chains"
+import { publicProvider } from "wagmi/providers/public"
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -20,23 +20,23 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     optimism,
     arbitrum,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : [])
   ],
   [publicProvider()]
-);
+)
 
 const { connectors } = getDefaultWallets({
-  appName: 'RainbowKit App',
-  projectId: 'YOUR_PROJECT_ID',
-  chains,
-});
+  appName: "Dapp Forge",
+  projectId: "928c0944dc8279fb073a7405ecd6b657",
+  chains
+})
 
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
-  webSocketPublicClient,
-});
+  webSocketPublicClient
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
