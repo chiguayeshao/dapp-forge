@@ -4,10 +4,12 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Button } from "@/components/ui/button"
 
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-      <Button >Button</Button>
+     
+
       <Head>
         <title>RainbowKit App</title>
         <meta
@@ -19,7 +21,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <ConnectButton />
-
+        <Button >Button</Button>
         <h1 className={styles.title}>
           Welcome to <a href="">RainbowKit</a> + <a href="">wagmi</a> +{' '}
           <a href="https://nextjs.org">Next.js!</a>
